@@ -24,8 +24,20 @@ import experience_replay, image_preprocessing
 
 # Making the brain
 
+class CNN(nn.Module):
+    
+    def __init__(self, number_actions):
+        super(CNN, self).__init__()
+        self.convolution1
+        self.convolution2
+        self.convolution3
+        self.fc1
+        self.fc2
+
+# Making the body
 
 
+# Making the AI
 
 
 
