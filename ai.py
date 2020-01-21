@@ -53,6 +53,15 @@ class CNN(nn.Module):
 
 # Making the body
 
+class SoftmaxBody(nn.modules):
+    
+    def __init__(self, T):
+        super(SoftmaxBody, self).__init__()
+        self.T = T
+    
+    
+        
+
 # Making the AI
 
 
