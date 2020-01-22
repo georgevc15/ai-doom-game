@@ -55,7 +55,7 @@ class CNN(nn.Module):
 
 class SoftmaxBody(nn.modules):
     
-    def __init__(self, T):
+    def __init__(self, T): 
         super(SoftmaxBody, self).__init__()
         self.T = T
     
@@ -72,5 +72,12 @@ class AI:
     def __init__(self, brain, body):
         self.brain = brain
         self.body = body
+        
+    def __call__(self, inputs):
+        input = Variable(torch.from_numpy(np.array(inputs, dtype = np.float32)))
+        output = self.brain(input)
+        actions = self.body(output)
+        return actions.data.numpy()
+        
 
 # Part 2 - Training the AI with Deep Convolutional Q-Learning
