@@ -67,5 +67,10 @@ class SoftmaxBody(nn.modules):
 
 # Making the AI
 
+class AI:
+    
+    def __init__(self, brain, body):
+        self.brain = brain
+        self.body = body
 
 # Part 2 - Training the AI with Deep Convolutional Q-Learning
