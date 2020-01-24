@@ -20,7 +20,7 @@ import experience_replay, image_preprocessing
 
 
 
-# Part 1 - Building the AI
+# Building the AI
 
 # Making the brain
 
@@ -80,7 +80,7 @@ class AI:
         return actions.data.numpy()
         
 
-# Part 2 - Training the AI with Deep Convolutional Q-Learning
+# Training the AI with Deep Convolutional Q-Learning
         
     
 # Getting the Doom environment
@@ -93,7 +93,9 @@ cnn = CNN(number_actions)
 softmax_body = SoftmaxBody(T = 1.0)
 ai = AI(brain = cnn, body = softmax_body)
 
-
+# Setting up Experience Replay
+n_steps = experience_replay.NStepProgress(env = doom_env, ai = ai, n_step =10) 
+memory = experience_replay.ReplayMemory(n_steps = n_steps)
 
 
 
