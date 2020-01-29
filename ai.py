@@ -98,7 +98,7 @@ n_steps = experience_replay.NStepProgress(env = doom_env, ai = ai, n_step =10)
 memory = experience_replay.ReplayMemory(n_steps = n_steps, capacity = 10000)
 
 # Implementing Eligibility Traces
-def eligibility_trace(bacth):
+def eligibility_trace(batch):
     gamma = 0.99
     inputs = []
     targets = []
@@ -115,6 +115,20 @@ def eligibility_trace(bacth):
         targets.append(target)
     return torch.from_numpy(np.array(inputs, dtype = np.float32)), torch.stack(targets)
     
-
+# Making the moving average on 100 steps
+class MA:
+    def __init__(self, size):
+        self.list_of_rewards = []
+        self.size = size
+    def add(self, rewards):
+        if isinstance(rewards, list):
+            self.list_of_rewards += rewards
+        else:
+            self.list_of_rewards.append(rewards)
+        while len(self.list_of_rewards) > self.size:
+            del self.list_of_rewards[0]
+    def average(self):
+        return np.mean(self.list_of_rewards)
+ma = MA(100)
 
 
