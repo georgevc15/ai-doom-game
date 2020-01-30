@@ -153,4 +153,5 @@ for epoch in range(1, nb_epochs + 1):
         print("Congaratulations, ypur AI wins")
         break
     
-
+# Closing the Doom environment
+doom_env.close()
